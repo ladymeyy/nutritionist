@@ -4,12 +4,32 @@ This project is identical to the original project we developed together
 but contains additional information (screenshots, presentation & background ) 
 which will be presented by me at Reversim Summit 2018 - https://summit2018.reversim.com/session/5b0d4dfc4b330d00147e3374
 
+Project Architecture:
+---------------------
+<img width="952" alt="screen shot 2018-08-27 at 16 08 38" src="https://user-images.githubusercontent.com/19207742/44661491-7e9b2f00-aa13-11e8-9c6a-940fa736bfdc.png">
+
+
 --------------------------------------------------------------------------------------
 
 # Background
-as will be presented at the Revesim Summit 2018 presentation: 
+As presented at the Revesim Summit 2018 presentation
+--------------------------------------------------------
+When was the last time you wrote an algorithm to plan your diet?
+
+Genetic Algorithm is known for being able to solve Constraint Satifaction Problems.
+Modeling our problem - what to eat in order to maintain a diat - as a Constraint Satifaction Problem
+helped to better understand the use of Genetic Algorithm. 
+
+<img width="1003" alt="screen shot 2018-08-27 at 16 13 20" src="https://user-images.githubusercontent.com/19207742/44661703-26186180-aa14-11e8-8ac5-0aec9f243dac.png">
+
+After modeling our problem as CSP, we modeled the solutions as solutions of Genetic Algorithm: 
+
+<img width="962" alt="screen shot 2018-08-27 at 16 15 24" src="https://user-images.githubusercontent.com/19207742/44661793-7394ce80-aa14-11e8-8214-f07116449bc6.png">
 
 
+finally, this is our Genetic Algorithm flow: 
+
+<img width="995" alt="screen shot 2018-08-27 at 15 50 04" src="https://user-images.githubusercontent.com/19207742/44660628-e603af80-aa10-11e8-918b-b3324469a082.png">
 
 
 ---------------------------------------------------------------------------------------
