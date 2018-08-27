@@ -6,7 +6,8 @@ which will be presented by me at Reversim Summit 2018 - https://summit2018.rever
 
 --------------------------------------------------------------------------------------
 
-#Background - as will be presented at the Revesim Summit 2018 presentation: 
+#Background
+as will be presented at the Revesim Summit 2018 presentation: 
 
 
 
