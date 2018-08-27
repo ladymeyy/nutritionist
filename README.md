@@ -26,4 +26,6 @@ since this is the service which activates the Genetic Algorithm.
    http://localhost:9122/docs/#/ 
    
    screenshot of planner swaggerUI: 
-   
+   <img width="1440" alt="screen shot 2018-08-27 at 11 52 44" src="https://user-images.githubusercontent.com/19207742/44651064-015ec280-a9f1-11e8-803f-0da5000f63df.png">
+
+
