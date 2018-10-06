@@ -22,7 +22,17 @@ function getMealPlans(req,res) {
   products = req.body.body.products;
 
   const mealPlans = executeAlgorithm(constraints, products);
-  res.status(200).json({ getMealPlans: 'getMealPlans' });
+
+  //sort by fitness
+ const sortedMealPlans = sortPopulation(mealPlans);
+
+ //filter meal plan - return only name + amount of each product
+  const bestPlan = filterMealPlan(sortedMealPlans[0]);
+  const secondBestPlan  = filterMealPlan(sortedMealPlans[1]);
+
+
+ //return the two best meal plans
+  res.status(200).json({ bestPlan, secondBestPlan });
 }
 
 /*-----------------------------------------------------------------------------------------------*/
@@ -58,6 +68,30 @@ function printPopulation(pop) {
 
   console.log(`@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@`);
 }
+
+function filterMealPlan(mealPlan){
+
+  const filteredPlan = {};
+  filteredPlan['fitness'] = mealPlan.fitness;
+  filteredPlan['genes'] = [];
+
+  mealPlan.genes.forEach(gene =>{
+    let obj = {};
+    obj['name'] = gene.name;
+    obj['numOfUnits'] = gene.amount.numOfUnits;
+    obj['grams'] = gene.amount.grams;
+    filteredPlan.genes.push(obj);
+  });
+  return filteredPlan;
+}
+
+function sortPopulation(pop){
+  return pop.sort(function (a, b) {
+    return a.fitness - b.fitness;
+  });
+}
+
+
 
 module.exports = {
   getMealPlans,
