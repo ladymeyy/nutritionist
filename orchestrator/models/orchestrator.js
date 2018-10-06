@@ -73,5 +73,64 @@ class Orchestrator {
       return err;
     }
   }
+
+
+  static async sendToPlanner(data){
+    const url = `${env.PLANNER_PROTOCOL}://${env.PLANNER_HOST}:${env.PLANNER_PORT}${env.PLANNER_URI}`;
+
+    const opt = { url, data };
+
+    try {
+      return await sendHttpRequest('post', opt);
+    }catch (err) {
+      return err;
+    }
+
+  }
+
+  buildPlannerRequest(productsFromDB){
+    const reqToPlanner = {
+      meta: this.meta,
+      body: { constraints: this.constraints, products: [] }
+    };
+
+    productsFromDB.forEach(product => {
+      const obj = {
+        id: product.id,
+        name: product.name,
+        quantity: parseInt(this.findProductByName(product.name).quantity),
+        units: 'grams'
+      };
+
+      const resolvedNutrients = this.calcNutrientsValueByAmount(product.nutrients, obj.quantity);
+      reqToPlanner.body.products.push(Object.assign(obj, resolvedNutrients));
+    });
+
+    console.log('-----------------------')
+    console.log(reqToPlanner)
+    return reqToPlanner;
+  }
+
+
+  findProductByName(name){
+    return this.productsFromClient.find(product => product.name === name);
+  }
+
+  /**
+   * converts nutrition values from 100gr to the input gr
+   * @param nutrientsValuesInGr
+   * @param amountInGr
+   */
+  calcNutrientsValueByAmount(nutrientsValuesInGr, amountInGr ){
+    const results = {};
+    nutrientsValuesInGr.forEach(nutrient => {
+      results[nutrient.name] = (nutrient.value * amountInGr) / 100.0;
+    });
+    return results;
+  }
+
+
+
+
 }
 module.exports = Orchestrator;
