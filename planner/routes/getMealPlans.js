@@ -41,7 +41,7 @@ function executeAlgorithm(constraints, products) {
 
   let population = generateInitPopulation(products, chromosomeSize, popSize);
 
-  populationFitness(population, constraints, planGrader.planFitness); //TODO move fitness function call
+  populationFitness(population, constraints, planGrader.planFitness);
 
   let generationCntr = 1;
   const generations = parseInt(env.NUMBER_OF_GENERATIONS);
@@ -55,6 +55,11 @@ function executeAlgorithm(constraints, products) {
   return population;
 }
 
+
+/**
+ * This function is helpful for debugging purposes
+ * @param pop
+ */
 function printPopulation(pop) {
   console.log(`@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@`);
 
