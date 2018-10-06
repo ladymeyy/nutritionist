@@ -26,8 +26,8 @@ function updateUserData(req,res) {
       { name: 'h', quantity: 'h', unit: 'h' } ] };
 
   const inst = new Orchestrator(feData.constrains, feData.products);
-  inst.execute();
-  res.status(200).json({ updateUserData: ['meals options :) <3 :) <3 :) <3','dsfghjf'] });
+  const result = inst.execute();
+  res.status(200).json({ results: result });
 }
 
 module.exports = {
