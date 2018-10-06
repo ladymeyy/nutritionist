@@ -13,7 +13,7 @@ services:
       - NODE_ENV=development
     ports:
       - "9600:9600"
-
+    command: node app
 
 
 
